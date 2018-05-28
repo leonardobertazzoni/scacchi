@@ -1,0 +1,785 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Scacchi</title>
+		<style media="screen">
+			body {
+				background-image: url("minimal.jpg");
+			}
+						
+			table {
+				margin: auto;
+				border-collapse: collapse;
+				width: 500px;
+				height: 500px;
+				box-shadow: 10px 10px 5px black;
+				
+				position: absolute;
+				top: 55%;
+				margin-top: -245px;
+				left: 50%;
+				margin-left: -250px;
+			}
+			
+			#option {
+				position: absolute;
+				text-align: center;
+				text-shadow: 10px 10px 5px black;
+				color: white;
+				margin-left: 100px;
+				margin-top: 100px;
+			}
+			
+			p {
+				text-align: center;
+				margin-left: 20px;
+				text-shadow: 10px 10px 5px black;
+				color: white;
+			}
+			
+			td {
+				text-align: center;
+				width: 64px;
+				height: 64px;
+			}
+			
+			.one {
+				background-color: white;
+			}
+			.two {
+				background-color: goldenrod;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align:center; text-shadow: 10px 10px 5px black; color: white;">Scacchi</h1>
+		<p><b>Per muovere un pezzo, clicca sulla pedina di partenza e poi su quella di destinazione.</b></p>
+		<div id="all">
+		<table>
+				<tr>
+					<td class="one" id="td00" onclick="cliccato(0,0)"><img  id="imm00" src="torre_n.png" /></td>
+					<td class="two" id="td01" onclick="cliccato(0,1)"><img  id="imm01" src="cavallo_n.png" /></td>
+					<td class="one" id="td02" onclick="cliccato(0,2)"><img  id="imm02" src="alfiere_n.png" /></td>
+					<td class="two" id="td03" onclick="cliccato(0,3)"><img  id="imm03" src="re_n.png" /></td>
+					<td class="one" id="td04" onclick="cliccato(0,4)"><img  id="imm04" src="regina_n.png" /></td>
+					<td class="two" id="td05" onclick="cliccato(0,5)"><img  id="imm05" src="alfiere_n.png" /></td>
+					<td class="one" id="td06" onclick="cliccato(0,6)"><img  id="imm06" src="cavallo_n.png" /></td>
+					<td class="two" id="td07" onclick="cliccato(0,7)"><img  id="imm07" src="torre_n.png" /></td>
+				</tr>
+				<tr>
+					<td class="two" id="td10" onclick="cliccato(1,0)"><img  id="imm10" src="pedone_n.png" /></td>
+					<td class="one" id="td11" onclick="cliccato(1,1)"><img  id="imm11" src="pedone_n.png" /></td>
+					<td class="two" id="td12" onclick="cliccato(1,2)"><img  id="imm12" src="pedone_n.png" /></td>
+					<td class="one" id="td13" onclick="cliccato(1,3)"><img  id="imm13" src="pedone_n.png" /></td>
+					<td class="two" id="td14" onclick="cliccato(1,4)"><img  id="imm14" src="pedone_n.png" /></td>
+					<td class="one" id="td15" onclick="cliccato(1,5)"><img  id="imm15" src="pedone_n.png" /></td>
+					<td class="two" id="td16" onclick="cliccato(1,6)"><img  id="imm16" src="pedone_n.png" /></td>
+					<td class="one" id="td17" onclick="cliccato(1,7)"><img  id="imm17" src="pedone_n.png" /></td>
+				</tr>
+				<tr>
+					<td class="one" id="td20" onclick="cliccato(2,0)"><img  id="imm20" src="vuota.png" /></td>
+					<td class="two" id="td21" onclick="cliccato(2,1)"><img  id="imm21" src="vuota.png" /></td>
+					<td class="one" id="td22" onclick="cliccato(2,2)"><img  id="imm22" src="vuota.png" /></td>
+					<td class="two" id="td23" onclick="cliccato(2,3)"><img  id="imm23" src="vuota.png" /></td>
+					<td class="one" id="td24" onclick="cliccato(2,4)"><img  id="imm24" src="vuota.png" /></td>
+					<td class="two" id="td25" onclick="cliccato(2,5)"><img  id="imm25" src="vuota.png" /></td>
+					<td class="one" id="td26" onclick="cliccato(2,6)"><img  id="imm26" src="vuota.png" /></td>
+					<td class="two" id="td27" onclick="cliccato(2,7)"><img  id="imm27" src="vuota.png" /></td>
+				</tr>
+				<tr>
+					<td class="two" id="td30" onclick="cliccato(3,0)"><img  id="imm30" src="vuota.png" /></td>
+					<td class="one" id="td31" onclick="cliccato(3,1)"><img  id="imm31" src="vuota.png" /></td>
+					<td class="two" id="td32" onclick="cliccato(3,2)"><img  id="imm32" src="vuota.png" /></td>
+					<td class="one" id="td33" onclick="cliccato(3,3)"><img  id="imm33" src="vuota.png" /></td>
+					<td class="two" id="td34" onclick="cliccato(3,4)"><img  id="imm34" src="vuota.png" /></td>
+					<td class="one" id="td35" onclick="cliccato(3,5)"><img  id="imm35" src="vuota.png" /></td>
+					<td class="two" id="td36" onclick="cliccato(3,6)"><img  id="imm36" src="vuota.png" /></td>
+					<td class="one" id="td37" onclick="cliccato(3,7)"><img  id="imm37" src="vuota.png" /></td>
+				</tr>
+				<tr>
+					<td class="one" id="td40" onclick="cliccato(4,0)"><img  id="imm40" src="vuota.png" /></td>
+					<td class="two" id="td41" onclick="cliccato(4,1)"><img  id="imm41" src="vuota.png" /></td>
+					<td class="one" id="td42" onclick="cliccato(4,2)"><img  id="imm42" src="vuota.png" /></td>
+					<td class="two" id="td43" onclick="cliccato(4,3)"><img  id="imm43" src="vuota.png" /></td>
+					<td class="one" id="td44" onclick="cliccato(4,4)"><img  id="imm44" src="vuota.png" /></td>
+					<td class="two" id="td45" onclick="cliccato(4,5)"><img  id="imm45" src="vuota.png" /></td>
+					<td class="one" id="td46" onclick="cliccato(4,6)"><img  id="imm46" src="vuota.png" /></td>
+					<td class="two" id="td47" onclick="cliccato(4,7)"><img  id="imm47" src="vuota.png" /></td>
+				</tr>
+				<tr>
+					<td class="two" id="td50" onclick="cliccato(5,0)"><img  id="imm50" src="vuota.png" /></td>
+					<td class="one" id="td51" onclick="cliccato(5,1)"><img  id="imm51" src="vuota.png" /></td>
+					<td class="two" id="td52" onclick="cliccato(5,2)"><img  id="imm52" src="vuota.png" /></td>
+					<td class="one" id="td53" onclick="cliccato(5,3)"><img  id="imm53" src="vuota.png" /></td>
+					<td class="two" id="td54" onclick="cliccato(5,4)"><img  id="imm54" src="vuota.png" /></td>
+					<td class="one" id="td55" onclick="cliccato(5,5)"><img  id="imm55" src="vuota.png" /></td>
+					<td class="two" id="td56" onclick="cliccato(5,6)"><img  id="imm56" src="vuota.png" /></td>
+					<td class="one" id="td57" onclick="cliccato(5,7)"><img  id="imm57" src="vuota.png" /></td>
+				</tr>
+				<tr>
+					<td class="one" id="td60" onclick="cliccato(6,0)"><img  id="imm60" src="pedone_b.png" /></td>
+					<td class="two" id="td61" onclick="cliccato(6,1)"><img  id="imm61" src="pedone_b.png" /></td>
+					<td class="one" id="td62" onclick="cliccato(6,2)"><img  id="imm62" src="pedone_b.png" /></td>
+					<td class="two" id="td63" onclick="cliccato(6,3)"><img  id="imm63" src="pedone_b.png" /></td>
+					<td class="one" id="td64" onclick="cliccato(6,4)"><img  id="imm64" src="pedone_b.png" /></td>
+					<td class="two" id="td65" onclick="cliccato(6,5)"><img  id="imm65" src="pedone_b.png" /></td>
+					<td class="one" id="td66" onclick="cliccato(6,6)"><img  id="imm66" src="pedone_b.png" /></td>
+					<td class="two" id="td67" onclick="cliccato(6,7)"><img  id="imm67" src="pedone_b.png" /></td>
+				</tr>
+				<tr>
+					<td class="two" id="td70" onclick="cliccato(7,0)"><img  id="imm70" src="torre_b.png" /></td>
+					<td class="one" id="td71" onclick="cliccato(7,1)"><img  id="imm71" src="cavallo_b.png" /></td>
+					<td class="two" id="td72" onclick="cliccato(7,2)"><img  id="imm72" src="alfiere_b.png" /></td>
+					<td class="one" id="td73" onclick="cliccato(7,3)"><img  id="imm73" src="re_b.png" /></td>
+					<td class="two" id="td74" onclick="cliccato(7,4)"><img  id="imm74" src="regina_b.png" /></td>
+					<td class="one" id="td75" onclick="cliccato(7,5)"><img  id="imm75" src="alfiere_b.png" /></td>
+					<td class="two" id="td76" onclick="cliccato(7,6)"><img  id="imm76" src="cavallo_b.png" /></td>
+					<td class="one" id="td77" onclick="cliccato(7,7)"><img  id="imm77" src="torre_b.png" /></td>
+				</tr>
+			</table>
+		<div id="option">
+			<fieldset style="border: 4px solid white;">
+				<legend>Turno:</legend>
+				<h3 id="turno" style="color: goldenrod">Bianco</h3>
+			</fieldset>
+			<fieldset style="border: 4px solid white;">
+				<legend>Tempo:</legend>
+				<h3 id="temp" style="color: goldenrod">__</h3>
+			</fieldset>
+		</div>
+		</div>
+		<script type="text/javascript">
+			
+			var change = false;
+			var turn = 0;
+			var tur = "Bianco";
+			var lastObj;
+			var lastColor;
+			var firstClick = true;
+			var mossaPedone;
+			var mossaTorre;
+			var mossaCavallo;
+			var mossaAlfiere;
+			var mossaRe;
+			var mossaRegina;
+			//var Fine = false;
+			//var tempo;
+			
+			//GESTIONE tempo
+		    /*function countdown(lastObj,turn,lastColor){
+			    if(tempo > 0){
+					tempo--;
+	                document.getElementById("temp").innerHTML = tempo;
+	                setTimeout("countdown(lastObj,turn,lastColor)", 1000);
+			    }
+			    else{
+				    alert("Tempo scaduto, cambio turno!");
+				    turn = 1; //Nero(dispari)
+					lastObj.style.backgroundColor = lastColor;
+					return turn;
+				}
+		    }*/
+			
+			function cliccato(riga,col){
+				
+				//GESTIONE pedine
+				if(firstClick == true){
+					if(document.getElementById("td"+riga+col).firstChild.getAttribute("src").includes("_b") && (turn %2 != 0) ||
+					document.getElementById("td"+riga+col).firstChild.getAttribute("src").includes("_n") && (turn %2 == 0)){
+						alert("Turno sbagliato!");
+					}
+					else{
+						//passaggio per selezionare elementi
+						if(change == false){
+							lastColor = document.getElementById("td"+riga+col).style.backgroundColor;
+							document.getElementById("td"+riga+col).style.backgroundColor="darkred";
+							lastObj =  document.getElementById("td"+riga+col);
+							
+							mossaPedone = [
+								//Bianco
+								document.getElementById("td"+(riga-1)+col),
+								document.getElementById("td"+(riga-1)+(col+1)),
+								document.getElementById("td"+(riga-1)+(col-1)),
+								//Nero
+								document.getElementById("td"+(riga+1)+col),
+								document.getElementById("td"+(riga+1)+(col+1)),
+								document.getElementById("td"+(riga+1)+(col-1))
+							];
+							mossaTorre = [
+								//Verticale-Alto
+								document.getElementById("td"+(riga-1)+col),
+								document.getElementById("td"+(riga-2)+col),
+								document.getElementById("td"+(riga-3)+col),
+								document.getElementById("td"+(riga-4)+col),
+								document.getElementById("td"+(riga-5)+col),
+								document.getElementById("td"+(riga-6)+col),
+								document.getElementById("td"+(riga-7)+col),
+								//Verticale-Basso
+								document.getElementById("td"+(riga+1)+col),
+								document.getElementById("td"+(riga+2)+col),
+								document.getElementById("td"+(riga+3)+col),
+								document.getElementById("td"+(riga+4)+col),
+								document.getElementById("td"+(riga+5)+col),
+								document.getElementById("td"+(riga+6)+col),
+								document.getElementById("td"+(riga+7)+col),
+								//Orizzontale-Sinistra
+								document.getElementById("td"+riga+(col-1)),
+								document.getElementById("td"+riga+(col-2)),
+								document.getElementById("td"+riga+(col-3)),
+								document.getElementById("td"+riga+(col-4)),
+								document.getElementById("td"+riga+(col-5)),
+								document.getElementById("td"+riga+(col-6)),
+								document.getElementById("td"+riga+(col-7)),
+								//Orizzontale-Destra
+								document.getElementById("td"+riga+(col+1)),
+								document.getElementById("td"+riga+(col+2)),
+								document.getElementById("td"+riga+(col+3)),
+								document.getElementById("td"+riga+(col+4)),
+								document.getElementById("td"+riga+(col+5)),
+								document.getElementById("td"+riga+(col+6)),
+								document.getElementById("td"+riga+(col+7))
+							];
+							mossaCavallo = [
+								//mosse a L
+								document.getElementById("td"+(riga-2)+(col+1)),
+								document.getElementById("td"+(riga-2)+(col-1)),
+								document.getElementById("td"+(riga+2)+(col+1)),
+								document.getElementById("td"+(riga+2)+(col-1)),
+								document.getElementById("td"+(riga-1)+(col+2)),
+								document.getElementById("td"+(riga-1)+(col-2)),
+								document.getElementById("td"+(riga+1)+(col-2)),
+								document.getElementById("td"+(riga+1)+(col+2))
+							];
+							mossaAlfiere = [
+								//Basso-Destra (obliquo)
+								document.getElementById("td"+(riga+1)+(col+1)),
+								document.getElementById("td"+(riga+2)+(col+2)),
+								document.getElementById("td"+(riga+3)+(col+3)),
+								document.getElementById("td"+(riga+4)+(col+4)),
+								document.getElementById("td"+(riga+5)+(col+5)),
+								document.getElementById("td"+(riga+6)+(col+6)),
+								document.getElementById("td"+(riga+7)+(col+7)),
+								//Basso-Sinistra (obliquo)
+								document.getElementById("td"+(riga+1)+(col-1)),
+								document.getElementById("td"+(riga+2)+(col-2)),
+								document.getElementById("td"+(riga+3)+(col-3)),
+								document.getElementById("td"+(riga+4)+(col-4)),
+								document.getElementById("td"+(riga+5)+(col-5)),
+								document.getElementById("td"+(riga+6)+(col-6)),
+								document.getElementById("td"+(riga+7)+(col-7)),
+								//Alto-Destra (obliquo)
+								document.getElementById("td"+(riga-1)+(col+1)),
+								document.getElementById("td"+(riga-2)+(col+2)),
+								document.getElementById("td"+(riga-3)+(col+3)),
+								document.getElementById("td"+(riga-4)+(col+4)),
+								document.getElementById("td"+(riga-5)+(col+5)),
+								document.getElementById("td"+(riga-6)+(col+6)),
+								document.getElementById("td"+(riga-7)+(col+7)),
+								//Alto-Sinistra (obliquo)
+								document.getElementById("td"+(riga-1)+(col-1)),
+								document.getElementById("td"+(riga-2)+(col-2)),
+								document.getElementById("td"+(riga-3)+(col-3)),
+								document.getElementById("td"+(riga-4)+(col-4)),
+								document.getElementById("td"+(riga-5)+(col-5)),
+								document.getElementById("td"+(riga-6)+(col-6)),
+								document.getElementById("td"+(riga-7)+(col-7))
+							];
+							mossaRe = [
+								//Alto
+								document.getElementById("td"+(riga-1)+col),
+								//Basso
+								document.getElementById("td"+(riga+1)+col),
+								//Sinistra
+								document.getElementById("td"+riga+(col-1)),
+								//Destra
+								document.getElementById("td"+riga+(col+1)),
+								//Basso-Destra (obliquo)
+								document.getElementById("td"+(riga+1)+(col+1)),
+								//Basso-Sinistra (obliquo)
+								document.getElementById("td"+(riga+1)+(col-1)),
+								//Alto-Destra (obliquo)
+								document.getElementById("td"+(riga-1)+(col+1)),
+								//Alto-Sinistra (obliquo)
+								document.getElementById("td"+(riga-1)+(col-1))
+							];
+							mossaRegina = [
+								//Verticale-Alto
+								document.getElementById("td"+(riga-1)+col),
+								document.getElementById("td"+(riga-2)+col),
+								document.getElementById("td"+(riga-3)+col),
+								document.getElementById("td"+(riga-4)+col),
+								document.getElementById("td"+(riga-5)+col),
+								document.getElementById("td"+(riga-6)+col),
+								document.getElementById("td"+(riga-7)+col),
+								//Verticale-Basso
+								document.getElementById("td"+(riga+1)+col),
+								document.getElementById("td"+(riga+2)+col),
+								document.getElementById("td"+(riga+3)+col),
+								document.getElementById("td"+(riga+4)+col),
+								document.getElementById("td"+(riga+5)+col),
+								document.getElementById("td"+(riga+6)+col),
+								document.getElementById("td"+(riga+7)+col),
+								//Orizzontale-Sinistra
+								document.getElementById("td"+riga+(col-1)),
+								document.getElementById("td"+riga+(col-2)),
+								document.getElementById("td"+riga+(col-3)),
+								document.getElementById("td"+riga+(col-4)),
+								document.getElementById("td"+riga+(col-5)),
+								document.getElementById("td"+riga+(col-6)),
+								document.getElementById("td"+riga+(col-7)),
+								//Orizzontale-Destra
+								document.getElementById("td"+riga+(col+1)),
+								document.getElementById("td"+riga+(col+2)),
+								document.getElementById("td"+riga+(col+3)),
+								document.getElementById("td"+riga+(col+4)),
+								document.getElementById("td"+riga+(col+5)),
+								document.getElementById("td"+riga+(col+6)),
+								document.getElementById("td"+riga+(col+7)),
+								//Basso-Destra (obliquo)
+								document.getElementById("td"+(riga+1)+(col+1)),
+								document.getElementById("td"+(riga+2)+(col+2)),
+								document.getElementById("td"+(riga+3)+(col+3)),
+								document.getElementById("td"+(riga+4)+(col+4)),
+								document.getElementById("td"+(riga+5)+(col+5)),
+								document.getElementById("td"+(riga+6)+(col+6)),
+								document.getElementById("td"+(riga+7)+(col+7)),
+								//Basso-Sinistra (obliquo)
+								document.getElementById("td"+(riga+1)+(col-1)),
+								document.getElementById("td"+(riga+2)+(col-2)),
+								document.getElementById("td"+(riga+3)+(col-3)),
+								document.getElementById("td"+(riga+4)+(col-4)),
+								document.getElementById("td"+(riga+5)+(col-5)),
+								document.getElementById("td"+(riga+6)+(col-6)),
+								document.getElementById("td"+(riga+7)+(col-7)),
+								//Alto-Destra (obliquo)
+								document.getElementById("td"+(riga-1)+(col+1)),
+								document.getElementById("td"+(riga-2)+(col+2)),
+								document.getElementById("td"+(riga-3)+(col+3)),
+								document.getElementById("td"+(riga-4)+(col+4)),
+								document.getElementById("td"+(riga-5)+(col+5)),
+								document.getElementById("td"+(riga-6)+(col+6)),
+								document.getElementById("td"+(riga-7)+(col+7)),
+								//Alto-Sinistra (obliquo)
+								document.getElementById("td"+(riga-1)+(col-1)),
+								document.getElementById("td"+(riga-2)+(col-2)),
+								document.getElementById("td"+(riga-3)+(col-3)),
+								document.getElementById("td"+(riga-4)+(col-4)),
+								document.getElementById("td"+(riga-5)+(col-5)),
+								document.getElementById("td"+(riga-6)+(col-6)),
+								document.getElementById("td"+(riga-7)+(col-7))
+							];
+							
+							firstClick = !firstClick;
+							
+							if(lastObj.firstChild.getAttribute("src") != "vuota.png"){
+								change = !change;
+							}
+							else{
+								alert("Mossa non valida!");
+								change = !change;
+								lastObj.style.backgroundColor=lastColor;
+							}
+						}
+					}	
+				}
+				//passaggio per muovere elementi
+				else{
+					if(change == true){
+						var i1 = lastObj.firstChild;
+						var i2 = document.getElementById("td"+riga+col).firstChild;
+						var dead = document.getElementById("td"+riga+col);
+						
+						//Pedone
+						if(i1.getAttribute("src").includes("pedone_b") && dead == mossaPedone[0] ||
+						   i1.getAttribute("src").includes("pedone_n") && dead == mossaPedone[3])
+						{
+							if(i2.getAttribute("src") == "vuota.png"){
+								lastObj.style.backgroundColor=lastColor;
+								var primaImg = i1.getAttribute("src");
+								i1.setAttribute("src", i2.getAttribute("src"));
+								i2.setAttribute("src", primaImg);
+							}
+							else{
+								if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+								   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+								    if((i1.getAttribute("src").includes("+") && dead == mossaPedone[1]) ||
+									   (i1.getAttribute("src").includes("_b") && dead == mossaPedone[2]) ||
+									   (i1.getAttribute("src").includes("_n") && dead == mossaPedone[4]) ||
+									   (i1.getAttribute("src").includes("_n") && dead == mossaPedone[5])){
+										alert("si");
+										if(i2.getAttribute("src") == "re_n.png"){
+											alert("Scacco al RE NERO!");
+											alert("Il RE dev'essere spostato!");
+										}
+										else{
+											if(i2.getAttribute("src") == "re_b.png"){
+												alert("Scacco al RE BIANCO!");
+												alert("Il RE dev'essere spostato!");
+											}
+											else{
+												i2.setAttribute("src", i1.getAttribute("src"));
+												i1.setAttribute("src", "vuota.png");
+											}
+										}
+									}
+									else{
+										alert("Mossa non valida!");
+										turn--;
+									}
+								}
+								else{
+									if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+									   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+										alert("Mossa non valida!");
+										turn--; 
+									}
+								}
+								lastObj.style.backgroundColor=lastColor;
+							}
+						}
+						else{
+							//Torre
+							if( i1.getAttribute("src").includes("torre") && dead == mossaTorre[0] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[1] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[2] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[3] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[4] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[5] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[6] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[7] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[8] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[9] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[10] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[11] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[12] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[13] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[14] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[15] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[16] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[17] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[18] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[19] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[20] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[21] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[22] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[23] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[24] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[25] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[26] ||
+								i1.getAttribute("src").includes("torre") && dead == mossaTorre[27])
+							{
+								if(i2.getAttribute("src") == "vuota.png"){
+									lastObj.style.backgroundColor=lastColor;
+									var primaImg = i1.getAttribute("src");
+									i1.setAttribute("src", i2.getAttribute("src"));
+									i2.setAttribute("src", primaImg);
+								}
+								else{
+									if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+									   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+										if(i2.getAttribute("src") == "re_n.png"){
+											alert("Scacco al RE NERO!");
+											alert("Il RE dev'essere spostato!");
+										}
+										else{
+											if(i2.getAttribute("src") == "re_b.png"){
+												alert("Scacco al RE BIANCO!");
+												alert("Il RE dev'essere spostato!");
+											}
+											else{
+												i2.setAttribute("src", i1.getAttribute("src"));
+												i1.setAttribute("src", "vuota.png");
+											}
+										}
+									}
+									else{
+										if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+										   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+											alert("Mossa non valida!");
+											turn--; 
+										}
+									}
+									lastObj.style.backgroundColor=lastColor;
+								}
+							}
+							else{
+								//Cavallo
+								if(i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[0] ||
+								   i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[1] ||
+								   i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[2] ||
+								   i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[3] ||
+								   i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[4] ||
+									  i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[5] ||
+									  i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[6] ||
+									  i1.getAttribute("src").includes("cavallo") && dead == mossaCavallo[7])
+								{
+									if(i2.getAttribute("src") == "vuota.png"){
+										lastObj.style.backgroundColor=lastColor;
+										var primaImg = i1.getAttribute("src");
+										i1.setAttribute("src", i2.getAttribute("src"));
+										i2.setAttribute("src", primaImg);
+									}
+									else{
+										if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+										   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+											if(i2.getAttribute("src") == "re_n.png"){
+												alert("Scacco al RE NERO!");
+												alert("Il RE dev'essere spostato!");
+											}
+											else{
+												if(i2.getAttribute("src") == "re_b.png"){
+													alert("Scacco al RE BIANCO!");
+													alert("Il RE dev'essere spostato!");
+												}
+												else{
+													i2.setAttribute("src", i1.getAttribute("src"));
+													i1.setAttribute("src", "vuota.png");
+												}
+											}
+										}
+										else{
+											if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+											   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+												alert("Mossa non valida!");
+												turn--; 
+											}
+										}
+										lastObj.style.backgroundColor=lastColor;
+									}
+								}
+								else{
+									//Alfiere
+									if( i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[0] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[1] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[2] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[3] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[4] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[5] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[6] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[7] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[8] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[9] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[10] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[11] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[12] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[13] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[14] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[15] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[16] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[17] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[18] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[19] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[20] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[21] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[22] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[23] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[24] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[25] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[26] ||
+										i1.getAttribute("src").includes("alfiere") && dead == mossaAlfiere[27])
+									{
+										if(i2.getAttribute("src") == "vuota.png"){
+											lastObj.style.backgroundColor=lastColor;
+											var primaImg = i1.getAttribute("src");
+											i1.setAttribute("src", i2.getAttribute("src"));
+											i2.setAttribute("src", primaImg);
+										}
+										else{
+											if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+											(i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+												if(i2.getAttribute("src") == "re_n.png"){
+													alert("Scacco al RE NERO!");
+													alert("Il RE dev'essere spostato!");
+												}
+												else{
+													if(i2.getAttribute("src") == "re_b.png"){
+														alert("Scacco al RE BIANCO!");
+														alert("Il RE dev'essere spostato!");
+													}
+													else{
+														i2.setAttribute("src", i1.getAttribute("src"));
+														i1.setAttribute("src", "vuota.png");
+													}
+												}
+											}
+											else{
+												if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+												   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+													alert("Mossa non valida!");
+													turn--; 
+												}
+											}
+											lastObj.style.backgroundColor=lastColor;
+										}
+									}
+									else{
+										//Regina
+										if( i1.getAttribute("src").includes("regina") && dead == mossaRegina[0] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[1] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[2] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[3] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[4] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[5] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[6] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[7] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[8] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[9] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[10] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[11] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[12] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[13] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[14] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[15] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[16] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[17] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[18] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[19] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[20] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[21] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[22] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[23] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[24] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[25] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[26] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[27] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[28] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[29] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[30] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[31] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[32] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[33] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[34] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[35] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[36] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[37] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[38] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[39] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[40] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[41] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[42] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[43] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[44] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[45] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[46] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[47] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[48] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[49] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[50] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[51] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[52] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[53] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[54] ||
+											i1.getAttribute("src").includes("regina") && dead == mossaRegina[55])
+										{
+											if(i2.getAttribute("src") == "vuota.png"){
+												lastObj.style.backgroundColor=lastColor;
+												var primaImg = i1.getAttribute("src");
+												i1.setAttribute("src", i2.getAttribute("src"));
+												i2.setAttribute("src", primaImg);
+											}
+											else{
+												if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+												   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+													if(i2.getAttribute("src") == "re_n.png"){
+														alert("Scacco al RE NERO!");
+														alert("Il RE dev'essere spostato!");
+													}
+													else{
+														if(i2.getAttribute("src") == "re_b.png"){
+															alert("Scacco al RE BIANCO!");
+															alert("Il RE dev'essere spostato!");
+														}
+														else{
+															i2.setAttribute("src", i1.getAttribute("src"));
+															i1.setAttribute("src", "vuota.png");
+														}
+													}
+												}
+												else{
+													if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+													   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+														alert("Mossa non valida!");
+														turn--; 
+													}
+												}
+												lastObj.style.backgroundColor=lastColor;
+											}
+										}
+										else{
+											//Re
+											if(//Re Bianco
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[0] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[1] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[2] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[3] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[4] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[5] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[6] ||
+											   (i1.getAttribute("src") == "re_b.png") && dead == mossaRe[7] ||
+											   //Re Nero
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[0] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[1] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[2] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[3] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[4] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[5] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[6] ||
+											   (i1.getAttribute("src") == "re_n.png") && dead == mossaRe[7])
+											{
+												if(i2.getAttribute("src") == "vuota.png"){
+													lastObj.style.backgroundColor=lastColor;
+													var primaImg = i1.getAttribute("src");
+													i1.setAttribute("src", i2.getAttribute("src"));
+													i2.setAttribute("src", primaImg);
+												}
+												else{
+													if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_n")) || 
+													   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_b"))){
+														if(i2.getAttribute("src") == "re_n.png"){
+															alert("Scacco al RE NERO!");
+															alert("Il RE dev'essere spostato!");
+														}
+														else{
+															if(i2.getAttribute("src") == "re_b.png"){
+																alert("Scacco al RE BIANCO!");
+																alert("Il RE dev'essere spostato!");
+															}
+															else{
+																i2.setAttribute("src", i1.getAttribute("src"));
+																i1.setAttribute("src", "vuota.png");
+															}
+														}
+													}
+													else{
+														if((i1.getAttribute("src").includes("_b") && i2.getAttribute("src").includes("_b")) || 
+														   (i1.getAttribute("src").includes("_n") && i2.getAttribute("src").includes("_n"))){
+															alert("Mossa non valida!");
+															turn--; 
+														}
+													}
+													lastObj.style.backgroundColor=lastColor;
+												}
+											}
+											else{
+												alert("Mossa non valida!");
+												lastObj.style.backgroundColor=lastColor;
+												turn--;
+											}
+										}
+									}
+								}
+							}
+						}
+						firstClick = !firstClick;
+						change = !change;
+						turn++;
+						if(turn %2 == 0) tur = "Bianco";
+						else tur = "Nero";
+						document.getElementById("turno").innerHTML=tur;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
